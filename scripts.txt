@@ -1,0 +1,20 @@
+nota = inteiro(entrar('Digite sua nota: '))
+somar = entrar("Digite seu nome: ")
+
+se (nota>10):
+  escrever("aluno nota DEZ", somar)
+e se (nota>5):
+  escrever("aprovado", somar)
+e se (nota!3):
+  escrever("recuperaçao", somar)
+e se (nota>0):
+  escrever("reprovado", somar)
+senao:
+  escrever("invalido", somar)
+
+para x em alcance(10):
+  escrever(x)
+
+enquanto Verdadeiro:
+  escrever('ok')
+
