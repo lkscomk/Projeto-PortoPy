@@ -45,6 +45,10 @@ def codificacao(code, **options):
     for r in range(len(imutaveis)):
         final = final.replace(str(imutaveis[r][0]),
                               code[imutaveis[r][1][0]:imutaveis[r][1][1]], 1)
+    temp = open('temp.py', 'w')
+    temp.write(final)
+    temp.close() 
+    print(final)
     return final
 
 
@@ -60,14 +64,12 @@ def reposicionar(script):
         sys.exit()
     else:
         for x in range(len(comandos)):
-            #print(comandos[x][0], comandos[x][1])
             script = script.replace(comandos[x][1], comandos[x][0])
         return script
 
 
 try:
     meuArquivo = open('scripts.txt')
-    temp = open('temp.txt', 'w')
     code = meuArquivo.read()
 except FileNotFoundError as erro:
     nameErro = translator.translate("File Not Found Error", dest='pt')
@@ -76,7 +78,7 @@ except FileNotFoundError as erro:
     sys.exit()
 
 try:
-    exec(codificacao(code, compilacao=True))
+    exec(codificacao(code, compilacao=False))
     #InteractiveConsole().runcode(final)
 except ValueError as erro:
     nameErro = translator.translate("Value Error", dest='pt')
@@ -94,6 +96,12 @@ except IndentationError as erro:
     sys.exit()
 except SyntaxError as erro:
     nameErro = translator.translate("Syntax Error", dest='pt')
+    descricaoErro = translator.translate(erro, dest='pt')
+    print(nameErro.text + ": " +
+          codificacao(str("'") + descricaoErro.text + str("'")))
+    sys.exit()
+except TypeError as erro:
+    nameErro = translator.translate("TypeError", dest='pt')
     descricaoErro = translator.translate(erro, dest='pt')
     print(nameErro.text + ": " +
           codificacao(str("'") + descricaoErro.text + str("'")))

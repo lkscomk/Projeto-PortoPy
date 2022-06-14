@@ -1,20 +1,50 @@
-nota = inteiro(entrar('Digite sua nota: '))
-somar = entrar("Digite seu nome: ")
+#exemplo usando o tipo C
+ip = input('Digite o endereço IP: ')
+mascara = input('Digite o endereço máscara: ')
 
-se (nota>10):
-  escrever("aluno nota DEZ", somar)
-e se (nota>5):
-  escrever("aprovado", somar)
-e se (nota!3):
-  escrever("recuperaçao", somar)
-e se (nota>0):
-  escrever("reprovado", somar)
-senao:
-  escrever("invalido", somar)
+#verificação de mascara
+mascara = int(mascara.split('.')[-1])
 
-para x em alcance(10):
-  escrever(x)
+#converter Final Para binario
+binario = format(mascara, "b")
+redeBinario = str(binario).count('1')
+hostBinario = str(binario).count('0')
 
-enquanto Verdadeiro:
-  escrever('ok')
+if mascara == 255:
+  cidr = '/32'
+  redes = 256
+  hosts = 1
+elif mascara == 254:
+  cidr = '/31'
+  redes = 128
+  hosts = 2
+elif mascara == 252:
+  cidr = '/30'
+  redes = 64
+  hosts = 4
+elif mascara == 248:
+  cidr = '/29'
+  redes = 32
+  hosts = 8
+elif mascara == 240:
+  cidr = '/28'
+  redes = 16
+  hosts = 16
+elif mascara == 224:
+  cidr = '/27'
+  redes = 8
+  hosts = 32
+elif mascara == 192:
+  cidr = '/26'
+  redes = 4
+  hosts = 64
+elif mascara == 128:
+  cidr = '/25'
+  redes = 2
+  hosts = 256
+elif mascara == 0:
+  cidr = '/25'
+  redes = 2
+  hosts = 256
 
+print('codigo:', cidr, '\nrede(s):', redes, '\nhost(s):', hosts, '\n Binario:', binario, '\nBinario de redes',)

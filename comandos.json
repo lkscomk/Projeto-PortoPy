@@ -18,6 +18,7 @@
     [ "if", "se"],
     [ "elif", "e if"],
     [ "else", "ifnao"],
+    [ "", "senao"],
     [ "True", "Verdadeiro"],
     [ "from", "de"],
     [ "none", "nada"],
